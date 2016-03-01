@@ -1,10 +1,11 @@
 web:
   build: .
+  command: python -u app.py
   ports:
-   - "5000:5000"
+    - "5000:5000"
   volumes:
-   - .:/code
+    - .:/flongo
   links:
-   - redis
-redis:
-  image: redis
+    - mongo
+mongo:
+  image: mongo:3.2.3

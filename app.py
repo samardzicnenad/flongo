@@ -1,13 +1,15 @@
-from flask import Flask
-from redis import Redis
+import os
+from flask import Flask, render_template
+from pymongo import MongoClient
 
 app = Flask(__name__)
-redis = Redis(host='redis', port=6379)
+
+client = MongoClient(os.environ['MONGO_PORT_27017_TCP_ADDR'], 27017)
+db = client.flongodb
 
 @app.route('/')
-def hello():
-    redis.incr('hits')
-    return 'Hello World! I have been seen %s times.' % redis.get('hits')
+def index():
+    return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host='0.0.0.0', debug=True)
