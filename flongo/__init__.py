@@ -1,8 +1,8 @@
 import os
-from flask import Flask
+import flask
 from pymongo import MongoClient
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 import flongo.views
 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>FLONGO welcome</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+    <div class="outer-div">
+        <h2>Behold FLONGO!</h2>
+        <div class="sub-title">...a Flask application template using MongoDB database</div>
+        <h3>WELCOME</h3>
+        <div>You can either</div>
+        <h3>
+            <a href="{{ url_for('login') }}">LOGIN</a>
+        </h3>
+        <div>if you are already a registered user, or</div>
+        <h3>
+            <a href="{{ url_for('signup') }}">SIGNUP</a>
+        </h3>
+        <div>if you are just about to become one!</div>
+    </div>
+</body>
+</html>

@@ -1,2 +1,67 @@
-<a href="{{ url_for('index') }}">main</a>
-<H1>FLONGO sign-up</H1>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>FLONGO signup</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+<div class="outer-div">
+    <h2>Behold FLONGO!</h2>
+    <div class="sub-title">...a Flask application template using MongoDB database</div>
+    <div class="options">
+        <div class="option_w">Back to welcome page?</div>
+        <div class="option_o">Already have an account?</div>
+    </div>
+    <div class="links">
+        <h3 class="option_w">
+            <a href="{{ url_for('welcome') }}">WELCOME</a>
+        </h3>
+        <h3 class="option_o">
+            <a href="{{ url_for('login') }}">LOGIN</a>
+        </h3>
+    </div>
+    <h3>SIGNUP</h3>
+    <div>
+        <form action="/signup" method="POST">
+            <table class="action-table">
+                <tr>
+                    <td class="label">Username</td>
+                    <td>
+                        <input type="text" name="username" value="{{username}}">
+                    </td>
+                    <td class="error">{{username_error}}</td>
+                </tr>
+                <tr>
+                    <td class="label">Password</td>
+                    <td>
+                        <input type="password" name="password" value="">
+                    </td>
+                    <td class="error">{{password_error}}</td>
+                </tr>
+                <tr>
+                    <td class="label">Verify Password</td>
+                    <td>
+                        <input type="password" name="verify_password" value="">
+                    </td>
+                    <td class="error">{{verify_password_error}}</td>
+                </tr>
+                <tr>
+                    <td class="label">Email (optional)</td>
+                    <td>
+                        <input type="text" name="email" value="{{email}}">
+                    </td>
+                    <td class="error">{{email_error}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="label">
+                        <input type="submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>
