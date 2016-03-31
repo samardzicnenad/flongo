@@ -63,3 +63,6 @@ target/
 
 #PyCharm directory
 .idea/
+
+# Generated css files
+flongo/static/css/

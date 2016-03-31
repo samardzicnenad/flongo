@@ -1,0 +1,66 @@
+html {
+    background-color: lavender;
+
+    body {
+        width: 100%;
+        padding-top: 0.5%;
+        font-size: 20px;
+
+        .outer-div {
+            width: 470px;
+            margin: 0px auto;
+
+            h2 {
+                width: 240px;
+                margin: 50px auto 10px auto;
+            }
+
+            .sub-title {
+                width: 460px;
+                padding-bottom: 30px;
+                margin: 0px auto;
+            }
+
+            .options {
+                margin-top: 5%;
+            }
+
+            .links {
+                margin-bottom: 10%;
+            }
+
+            .option_w {
+                float: left;
+                margin: 0 4%;
+                width: 46%;
+            }
+
+            .option_o {
+                overflow: hidden;
+                width: 46%;
+            }
+
+            h3 {
+                width: 100%;
+                text-align: center;
+                margin: 25px auto 20px auto;
+                font-size: 18px;
+
+                a {
+                    text-decoration: none;
+                }
+            }
+
+            .action-table {
+                margin: 0 auto;
+            }
+
+            .label {
+                width: 132px;
+                text-align: right
+            }
+
+            .error {color: red}
+        }
+    }
+}
