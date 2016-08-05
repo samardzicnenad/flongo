@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>FLONGO welcome</title>
-    <link href="{{ url_for('static', filename='css/style.scss.css') }}" rel="stylesheet" type="text/css">
-</head>
-<body>
-    <div class="outer-div">
-        <h2>Behold FLONGO!</h2>
-        <div class="sub-title">...a Flask application template using MongoDB database</div>
-        <h3>WELCOME</h3>
-        <div>You can either</div>
-        <h3>
-            <a href="{{ url_for('login') }}">LOGIN</a>
-        </h3>
-        <div>if you are already a registered user, or</div>
-        <h3>
-            <a href="{{ url_for('signup') }}">SIGNUP</a>
-        </h3>
-        <div>if you are just about to become one!</div>
-    </div>
-</body>
-</html>
+{% extends "base_template.html" %}
+{% block content %}
+    <h3>WELCOME, {{ username }}</h3>
+    <div class="centered-msg">You have just been registered with FLONGO.</div>
+    {% with message='Ready to start?', target='login' %}
+        {% include 'links_template.html' %}
+    {% endwith %}
+{% endblock %}

@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>FLONGO error</title>
-    <link href="{{ url_for('static', filename='css/style.scss.css') }}" rel="stylesheet" type="text/css">
-</head>
-<body>
-    <div class="outer-div">
-        <h2>Behold FLONGO!</h2>
-        <div class="sub-title">...a Flask application template using MongoDB database</div>
-        <h3>ERROR</h3>
+{% extends "base_template.html" %}
+{% block content %}
+    <h3>UH-OH!</h3>
+    {% if errors %}
+    <div class="errors">
+        {{ errors|safe }}
     </div>
-</body>
-</html>
+    {% endif %}
+    {% with message='Try again?', target=target %}
+        {% include 'links_template.html' %}
+    {% endwith %}
+{% endblock %}

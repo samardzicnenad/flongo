@@ -1,0 +1,55 @@
+{% extends "base_template.html" %}
+{% block content %}
+<h3>INFO (times are shown in GMT)</h3>
+<div class="centered-msg">
+    <div class="caption">List of all of the FLONGO registered users:</div>
+    <table>
+        <tr>
+            <th class="username">username</th>
+            <th>email</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td class="username">{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="centered-msg">
+    <div class="caption">List of all of the current FLONGO sessions:</div>
+    <table>
+        <tr>
+            <th class="username">username</th>
+            <th>created on</th>
+            <th>expires on</th>
+        </tr>
+        {% for session in sessions %}
+        <tr>
+            <td>{{ session.username }}</td>
+            <td>{{ session.createdOn.strftime('%m/%d/%Y %H:%M:%S') }}</td>
+            <td>{{ session.expiresOn.strftime('%m/%d/%Y %H:%M:%S') }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="centered-msg">
+    <div class="caption">List of all of the past FLONGO sessions:</div>
+    <table>
+        <tr>
+            <th class="username">username</th>
+            <th>created on</th>
+            <th>expires on</th>
+            <th>logged out</th>
+        </tr>
+        {% for past_session in past_sessions %}
+        <tr>
+            <td class="username">{{ past_session.username }}</td>
+            <td>{{ past_session.createdOn.strftime('%m/%d/%Y %H:%M:%S') }}</td>
+            <td>{{ past_session.expiresOn.strftime('%m/%d/%Y %H:%M:%S') }}</td>
+            <td>{{ past_session.loggedOut }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

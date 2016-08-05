@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>FLONGO index</title>
-    <link href="{{ url_for('static', filename='css/style.scss.css') }}" rel="stylesheet" type="text/css">
-</head>
-<body>
-    <div class="outer-div">
-        <h2>Behold FLONGO!</h2>
-        <div class="sub-title">...a Flask application template using MongoDB database</div>
-        <h3>INDEX</h3>
+{% extends "base_template.html" %}
+{% block content %}
+    <h3>INDEX</h3>
+    <div class="centered-msg">
+        {% if username %}
+            <div>
+                Hello, {{username}} !
+            </div>
+        {% endif %}
     </div>
-</body>
-</html>
+    <div class="centered-msg">
+        <form method="post" action="index" class="inline">
+            Had enough fun?
+            <button type="submit" name="username" value={{username}} class="link-button">...LOGOUT</button>
+        </form>
+    </div>
+{% endblock %}

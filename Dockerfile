@@ -1,4 +1,4 @@
-FROM python:2.7.11
+FROM python:2.7.12
 ADD . /flongo
 WORKDIR /flongo
 RUN pip install --upgrade pip

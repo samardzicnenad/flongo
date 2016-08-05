@@ -1,53 +1,31 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>FLONGO login</title>
-    <link href="{{ url_for('static', filename='css/style.scss.css') }}" rel="stylesheet" type="text/css">
-</head>
-<body>
-    <div class="outer-div">
-        <h2>Behold FLONGO!</h2>
-        <div class="sub-title">...a Flask application template using MongoDB database</div>
-        <div class="options">
-            <div class="option_w">Back to welcome page?</div>
-            <div class="option_o">Need to create an account?</div>
-        </div>
-        <div class="links">
-            <h3 class="option_w">
-                <a href="{{ url_for('welcome') }}">WELCOME</a>
-            </h3>
-            <h3 class="option_o">
-                <a href="{{ url_for('signup') }}">SIGNUP</a>
-            </h3>
-        </div>
-        <h3>LOGIN</h3>
-        <div>
-            <form action="/dummy" method="POST">
-                <table class="action-table">
-                    <tr>
-                        <td class="label">Username</td>
-                        <td>
-                            <input type="text" name="username" value="{{username}}">
-                        </td>
-                        <td class="error">{{username_error}}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Password</td>
-                        <td>
-                            <input type="password" name="password" value="">
-                        </td>
-                        <td class="error">{{password_error}}</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td class="label">
-                            <input type="submit">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+{% extends "base_template.html" %}
+{% block content %}
+    <h3>LOGIN</h3>
+    <div class="action">
+        <form action="/login" method="POST">
+            <table class="action-table">
+                <tr>
+                    <td class="label">Username</td>
+                    <td>
+                        <input type="text" name="username" value="{{username}}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Password</td>
+                    <td>
+                        <input type="password" name="password" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="label">
+                        <input type="submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
-</body>
-</html>
+    {% with message='Need to create an account?', target='signup' %}
+        {% include 'links_template.html' %}
+    {% endwith %}
+{% endblock %}
