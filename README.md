@@ -1,6 +1,6 @@
 # Flongo
 ## Description:
-Flongo is a "template app" for the Flask - MongoDB environment.  
+Flongo is a "template app" for the Python/Flask - MongoDB environment.  
 It also provides a simple user management system that serves the following API endpoints:
 - <b>/</b> (it will redirect to /login or /index depending on the existence of the active user session)
 - <b>/signup</b>
@@ -18,7 +18,7 @@ Running
 <pre>
 $ docker-compose up
 </pre>
-command will build, create, start and link the container instances for the services defined in the docker-compose.yml file, resulting in web app running on:
+command will pull images and build, create, start and link the container instances for the services defined in the docker-compose.yml file, resulting in web app running on:
 <pre>
 http://0.0.0.0:5000/
 </pre>
