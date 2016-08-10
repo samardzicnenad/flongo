@@ -39,3 +39,6 @@ The app stores data in three tables:
 The app uses:
 - jinja2 - templating system and
 - libsass - flask extension for building css from sass or scss
+
+## Notes:
+- during the login and signup processes, non ascii characters will be ignored

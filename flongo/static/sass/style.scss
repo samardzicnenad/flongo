@@ -92,6 +92,11 @@ html {
 
                 li {
                     margin-top: 10px;
+
+                    .error {
+                        color: red;
+                        font-style: italic;
+                    }
                 }
             }
 

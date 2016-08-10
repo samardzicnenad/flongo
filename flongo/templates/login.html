@@ -1,31 +1,31 @@
 {% extends "base_template.html" %}
 {% block content %}
-    <h3>LOGIN</h3>
-    <div class="action">
-        <form action="/login" method="POST">
-            <table class="action-table">
-                <tr>
-                    <td class="label">Username</td>
-                    <td>
-                        <input type="text" name="username" value="{{username}}">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Password</td>
-                    <td>
-                        <input type="password" name="password" value="">
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td class="label">
-                        <input type="submit">
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
-    {% with message='Need to create an account?', target='signup' %}
-        {% include 'links_template.html' %}
-    {% endwith %}
+<h3>LOGIN</h3>
+<div class="action">
+    <form action="/login" method="POST">
+        <table class="action-table">
+            <tr>
+                <td class="label">Username</td>
+                <td>
+                    <input type="text" name="username" value="{{username}}">
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Password</td>
+                <td>
+                    <input type="password" name="password" value="">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="label">
+                    <input type="submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% with message='Need to create an account?', target='signup' %}
+{% include 'links_template.html' %}
+{% endwith %}
 {% endblock %}

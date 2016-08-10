@@ -1,14 +1,10 @@
-import ast
 import datetime
-import json
-
-from flask import render_template, request, redirect, url_for
 from signal import signal, SIGPIPE, SIG_DFL
-
+from flask import render_template, request, redirect, url_for
 from flongo import app, db_flongo
-from user import signup_user, generate_user_hash, user_validation
-from session import check_for_session, archive_user_session
 from globals import global_salt, bullet_separator
+from session import check_for_session, archive_user_session
+from user import signup_user, generate_user_hash, user_validation
 
 # attempt to prevent: "IOError: [Errno 32] Broken pipe"
 signal(SIGPIPE, SIG_DFL)
@@ -28,10 +24,10 @@ def signup():
         return render_template('signup.html')
     else:
         # retrieve user's signup data
-        username = request.form['username']
-        password = request.form['password']
-        confirmation = request.form['confirmation']
-        email = request.form['email']
+        username = ignore_non_ascii(request.form['username'])
+        password = ignore_non_ascii(request.form['password'])
+        confirmation = ignore_non_ascii(request.form['confirmation'])
+        email = ignore_non_ascii(request.form['email'])
 
         # ...and validate it
         validation_issues = user_validation(username, password, confirmation, email)
@@ -55,8 +51,8 @@ def login():
         return render_template('login.html')
     else:
         # retrieve user's login data
-        username = request.form['username']
-        password = request.form['password']
+        username = ignore_non_ascii(request.form['username'])
+        password = ignore_non_ascii(request.form['password'])
 
         # ...and validate it
         validation_issues = user_validation(username, password)
@@ -68,8 +64,8 @@ def login():
                 return render_error_page(['A user with the provided username does not exist! Please, try again.'],
                                          'login')
 
-            user_salt = evaluate_unicode(user['user_salt'])
-            user_hash = evaluate_unicode(user['user_hash'])
+            user_salt = user['user_salt']
+            user_hash = user['user_hash']
             check_hash = generate_user_hash(global_salt, user_salt, password)
             # wrong password
             if user_hash != check_hash:
@@ -125,8 +121,8 @@ def render_error_page(errors, target):
     return render_template('error.html', errors=bullet_separator.join(errors), target=target)
 
 
-def evaluate_unicode(field):
-    return ast.literal_eval(json.dumps(field))
+def ignore_non_ascii(field):
+    return field.encode('ascii', 'ignore').decode('ascii')
 
 
 # auxiliary route, not really a 'core' part of the project

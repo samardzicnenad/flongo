@@ -1,7 +1,6 @@
 import datetime
 from flask import request
 from bson.objectid import ObjectId
-
 from flongo import db_flongo
 
 

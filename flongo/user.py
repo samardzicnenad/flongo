@@ -1,7 +1,6 @@
 import hashlib
 import random
 import re
-
 from flongo import db_flongo
 from globals import global_salt, bullet_separator
 
@@ -14,26 +13,26 @@ def user_validation(username, password, confirmation=None, email=None):
     errors = {}
 
     if not username_regex.match(username):
-        errors['username'] = 'Invalid username{0}! ' \
+        errors['username'] = '<span class="error">Invalid username{0}!</span> ' \
                              'Your username must start with a character; ' \
                              'it can contain only characters, digits, underscore and/or dash symbols ' \
                              'and its length has to be between 6 and 20!'. \
-                             format(wrap_invalid_element(username))
+            format(wrap_invalid_element(username))
 
     if not password_regex.match(password):
-        errors['password'] = 'Invalid password{0}! ' \
+        errors['password'] = '<span class="error">Invalid password{0}!</span> ' \
                              'Your password\'s length has to be between 8 and 20!'. \
-                             format(wrap_invalid_element(password))
+            format(wrap_invalid_element(password))
 
     if confirmation is not None and password != confirmation:
-        errors['confirmation'] = 'Invalid password confirmation{0}! ' \
+        errors['confirmation'] = '<span class="error">Invalid password confirmation{0}!</span> ' \
                                  'Your confirmation has to match the password!'. \
-                                 format(wrap_invalid_element(confirmation))
+            format(wrap_invalid_element(confirmation))
 
     if email is not None and not email_regex.match(email):
-        errors['email'] = 'Invalid email address{0}! ' \
+        errors['email'] = '<span class="error">Invalid email address{0}!</span> ' \
                           'Your email address has to follow the pattern: local_part@domain_name.domain_extension !'. \
-                          format(wrap_invalid_element(email))
+            format(wrap_invalid_element(email))
     # return an array containing validation error messages
     return errors
 
