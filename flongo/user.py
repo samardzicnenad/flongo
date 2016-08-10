@@ -1,6 +1,7 @@
 import hashlib
 import random
 import re
+
 from flongo import db_flongo
 from globals import global_salt, bullet_separator
 
@@ -31,7 +32,7 @@ def user_validation(username, password, confirmation=None, email=None):
 
     if email is not None and not email_regex.match(email):
         errors['email'] = '<span class="error">Invalid email address{0}!</span> ' \
-                          'Your email address has to follow the pattern: local_part@domain_name.domain_extension !'. \
+                          'Your email address has to follow the pattern: local_part@domain_name.domain_extension!'. \
             format(wrap_invalid_element(email))
     # return an array containing validation error messages
     return errors

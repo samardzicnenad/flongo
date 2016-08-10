@@ -1,6 +1,8 @@
 import datetime
 from signal import signal, SIGPIPE, SIG_DFL
-from flask import render_template, request, redirect, url_for
+
+from flask import request, redirect, url_for, render_template
+
 from flongo import app, db_flongo
 from globals import global_salt, bullet_separator
 from session import check_for_session, archive_user_session
@@ -125,8 +127,7 @@ def ignore_non_ascii(field):
     return field.encode('ascii', 'ignore').decode('ascii')
 
 
-# auxiliary route, not really a 'core' part of the project
-# lists out existing users and current/past sessions
+# auxiliary route - lists out existing users and current/past sessions
 @app.route('/info', methods=['GET'])
 def info():
     users = db_flongo.users.find()
