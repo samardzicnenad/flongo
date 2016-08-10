@@ -1,6 +1,6 @@
 import os
 import flask
-from sassutils.wsgi import SassMiddleware
+import sassutils.wsgi
 from pymongo import MongoClient
 
 app = flask.Flask(__name__)
@@ -16,6 +16,6 @@ db_flongo.sessions.create_index('expiresOn')
 
 import flongo.views
 
-app.wsgi_app = SassMiddleware(app.wsgi_app, {
+app.wsgi_app = sassutils.wsgi.SassMiddleware(app.wsgi_app, {
     'flongo': ('static/sass', 'static/css', '/static/css')
 })
