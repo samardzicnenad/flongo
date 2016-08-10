@@ -13,6 +13,8 @@ There is also an auxiliary endpoint:
 
 which is not actually a part of the project, but exists in order to provide additional info to the app users.
 
+Once a user is created and logs in, the session cookie is created and it is valid for 30 minutes
+
 ## Usage:
 Running
 <pre>

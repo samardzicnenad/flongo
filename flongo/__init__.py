@@ -1,7 +1,7 @@
 import os
 import flask
-from pymongo import MongoClient
 from sassutils.wsgi import SassMiddleware
+from pymongo import MongoClient
 
 app = flask.Flask(__name__)
 
