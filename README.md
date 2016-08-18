@@ -20,12 +20,12 @@ Running
 <pre>
 $ docker-compose up
 </pre>
-command will pull images and build, create, start and link the container instances for the services defined in the docker-compose.yml file, resulting in web app running on:
+command will pull images and build, create, start and link the container instances for the services defined in the docker-compose.yml file, resulting in flongo app running on:
 <pre>
 http://0.0.0.0:5000/
 </pre>
 * docker-compose.yml defines two services that will get started and linked:
-  * web (python:2.7.12 with the following dependencies: flask, pymongo, libsass)
+  * flongo (python:2.7.12 with the following dependencies: flask, pymongo, libsass)
   * mongo (mongo:3.3.10)
   
 ## Data model specifics:

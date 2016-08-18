@@ -1,4 +1,4 @@
-web:
+flongo:
   build: .
   command: python -u runserver.py
   ports:
