@@ -1,11 +1,23 @@
 flongo:
-  build: .
+  restart: always
+  build: ./flongo
   command: python -u runserver.py
-  ports:
-    - "5000:5000"
+  expose:
+    - "5000"
   volumes:
     - .:/flongo
   links:
-    - mongo
+    - mongo:mongo
 mongo:
   image: mongo:3.3.10
+nginx:
+  restart: always
+  build: ./nginx
+  expose:
+    - "80"
+  ports:
+    - "80:80"
+  volumes_from:
+    - flongo
+  links:
+    - flongo:flongo

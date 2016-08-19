@@ -23,12 +23,12 @@ def user_validation(username, password, confirmation=None, email=None):
     if not password_regex.match(password):
         errors['password'] = '<span class="error">Invalid password{0}!</span> ' \
                              'Your password\'s length has to be between 8 and 20!'. \
-            format(wrap_invalid_element(password))
+            format(wrap_invalid_element('*' * len(password)))
 
     if confirmation is not None and password != confirmation:
         errors['confirmation'] = '<span class="error">Invalid password confirmation{0}!</span> ' \
                                  'Your confirmation has to match the password!'. \
-            format(wrap_invalid_element(confirmation))
+            format(wrap_invalid_element('*' * len(confirmation)))
 
     if email is not None and not email_regex.match(email):
         errors['email'] = '<span class="error">Invalid email address{0}!</span> ' \
