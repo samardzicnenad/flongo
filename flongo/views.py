@@ -1,5 +1,4 @@
 import datetime
-from signal import signal, SIGPIPE, SIG_DFL
 
 from flask import request, redirect, url_for, render_template
 
@@ -7,9 +6,6 @@ from flongo import app, db_flongo
 from globals import global_salt, bullet_separator
 from session import check_for_session, archive_user_session
 from user import signup_user, generate_user_hash, user_validation
-
-# attempt to prevent: "IOError: [Errno 32] Broken pipe"
-signal(SIGPIPE, SIG_DFL)
 
 
 @app.route('/', methods=['GET'])
