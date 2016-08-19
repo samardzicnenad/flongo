@@ -1,9 +1,9 @@
 import hashlib
 import random
 import re
+import os
 
 from flongo import db_flongo
-from globals import global_salt, bullet_separator
 
 
 def user_validation(username, password, confirmation=None, email=None):
@@ -44,7 +44,7 @@ def wrap_invalid_element(element):
 
 def signup_user(username, password, email):
     user_salt = generate_user_salt()
-    user_hash = generate_user_hash(global_salt, user_salt, password)
+    user_hash = generate_user_hash(os.environ['GLOBAL_SALT'], user_salt, password)
     user = {
         'username': username,
         'email': email,
@@ -62,7 +62,7 @@ def signup_user(username, password, email):
             for element in ['email', 'username']:
                 if element in ex.message:
                     msg = 'There is already a user with that {0}! Please, choose a different one!'.format(element)
-                    error_message.append('{0}!{1}{2}'.format(exception_type, bullet_separator, msg))
+                    error_message.append('{0}!{1}{2}'.format(exception_type, '</br><li>', msg))
         else:
             error_message.append('{0}!'.format(exception_type))
     return error_message

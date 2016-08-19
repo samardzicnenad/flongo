@@ -1,9 +1,9 @@
 import datetime
+import os
 
 from flask import request, redirect, url_for, render_template
 
 from flongo import app, db_flongo
-from globals import global_salt, bullet_separator
 from session import check_for_session, archive_user_session
 from user import signup_user, generate_user_hash, user_validation
 
@@ -64,7 +64,7 @@ def login():
 
             user_salt = user['user_salt']
             user_hash = user['user_hash']
-            check_hash = generate_user_hash(global_salt, user_salt, password)
+            check_hash = generate_user_hash(os.environ['GLOBAL_SALT'], user_salt, password)
             # wrong password
             if user_hash != check_hash:
                 return render_error_page(['You provided an incorrect password! Please, try again.'], 'login')
@@ -116,7 +116,7 @@ def report_validation_issues(source, field_list, validation_issues):
 
 
 def render_error_page(errors, target):
-    return render_template('error.html', errors=bullet_separator.join(errors), target=target)
+    return render_template('error.html', errors='</br><li>'.join(errors), target=target)
 
 
 def ignore_non_ascii(field):
