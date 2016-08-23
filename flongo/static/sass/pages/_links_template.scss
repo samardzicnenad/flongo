@@ -1,0 +1,9 @@
+.links {
+    @include centered(25px, 20px);
+    overflow: hidden;
+
+    a {
+        font: $link-font;
+        text-decoration: none;
+    }
+}

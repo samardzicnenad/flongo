@@ -1,0 +1,5 @@
+@mixin centered($margin-top: 0px, $margin-bottom: 0px) {
+    margin: $margin-top auto $margin-bottom auto;
+    text-align: center;
+    width: 100%;
+}

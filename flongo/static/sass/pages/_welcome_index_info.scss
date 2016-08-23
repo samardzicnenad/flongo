@@ -1,0 +1,20 @@
+.centered-msg {
+    @include centered();
+
+    .caption {
+        @include centered(30px, 5px);
+        font: $link-font;
+    }
+
+    table {
+        @include centered();
+        border: $table-border;
+
+        th {
+            border: $table-border;
+            padding: 0 5px;
+        }
+    }
+
+    @import "pages/index";
+}

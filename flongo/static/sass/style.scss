@@ -1,11 +1,5 @@
-@mixin centered($margin-top: 0px, $margin-bottom: 0px) {
-    margin: $margin-top auto $margin-bottom auto;
-    text-align: center;
-    width: 100%;
-}
-
-$link-font: bold 18px serif;
-$table-border: 1px solid black;
+@import "helpers/mixins";
+@import "helpers/variables";
 
 html {
     background-color: lavender;
@@ -32,88 +26,13 @@ html {
                 font: $link-font;
             }
 
-            .action {
-                height: 140px;
+            @import "pages/login_signup";
 
-                .action-table {
-                    margin: 0 auto;
+            @import "pages/welcome_index_info";
 
-                    td {
-                        display: inline-grid;
+            @import "pages/error";
 
-                        input {
-                            float: right;
-                        }
-                    }
-
-                    .label {
-                        text-align: right;
-                        width: 190px;
-                    }
-                }
-            }
-
-            .centered-msg {
-                @include centered();
-
-                .caption {
-                    @include centered(30px, 5px);
-                    font: $link-font;
-                }
-
-                table {
-                    @include centered();
-                    border: $table-border;
-
-                    th {
-                        border: $table-border;
-                        padding: 0 5px;
-                    }
-                }
-
-                .inline {
-                    display: inline;
-
-                    .link-button {
-                        background: none;
-                        border: none;
-                        color: blue;
-                        cursor: pointer;
-                        font: $link-font;
-                        margin-top: 40px;
-                        text-decoration: none;
-                    }
-                    .link-button:focus {
-                        outline: none;
-                    }
-                    .link-button:active {
-                        color:red;
-                    }
-                }
-            }
-
-            .errors {
-                @include centered();
-
-                li {
-                    margin-top: 10px;
-
-                    .error {
-                        color: red;
-                        font-style: italic;
-                    }
-                }
-            }
-
-            .links {
-                @include centered(25px, 20px);
-                overflow: hidden;
-
-                a {
-                    font: $link-font;
-                    text-decoration: none;
-                }
-            }
+            @import "pages/links_template";
         }
     }
 }

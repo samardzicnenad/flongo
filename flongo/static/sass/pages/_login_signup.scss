@@ -1,0 +1,20 @@
+.action {
+    height: 140px;
+
+    .action-table {
+        margin: 0 auto;
+
+        td {
+            display: inline-grid;
+
+            input {
+                float: right;
+            }
+        }
+
+        .label {
+            text-align: right;
+            width: 190px;
+        }
+    }
+}
