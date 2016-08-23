@@ -1,30 +1,35 @@
+@mixin centered($margin-top: 0px, $margin-bottom: 0px) {
+    margin: $margin-top auto $margin-bottom auto;
+    text-align: center;
+    width: 100%;
+}
+
+$link-font: bold 18px serif;
+$table-border: 1px solid black;
+
 html {
     background-color: lavender;
 
     body {
-        width: 100%;
-        padding-top: 1.5%;
+        @include centered();
         font-size: 20px;
+        padding-top: 1.5%;
 
         .outer-div {
+            @include centered();
             width: 1000px;
-            margin: 0px auto;
 
             h2 {
-                width: 240px;
-                margin: 50px auto 10px auto;
+                @include centered(50px, 10px);
             }
 
             .sub-title {
-                width: 460px;
                 padding-bottom: 30px;
-                margin: 0px auto;
             }
 
             h3 {
-                text-align: center;
-                margin: 25px auto;
-                font-size: 18px;
+                @include centered(25px, 25px);
+                font: $link-font;
             }
 
             .action {
@@ -33,31 +38,35 @@ html {
                 .action-table {
                     margin: 0 auto;
 
+                    td {
+                        display: inline-grid;
+
+                        input {
+                            float: right;
+                        }
+                    }
+
                     .label {
-                        width: 150px;
                         text-align: right;
+                        width: 190px;
                     }
                 }
             }
 
             .centered-msg {
-                text-align: center;
+                @include centered();
 
                 .caption {
-                    font-weight: bold;
-                    margin: 30px 0 5px 0;
+                    @include centered(30px, 5px);
+                    font: $link-font;
                 }
 
                 table {
-                    border-color: black;
-                    border-width: 1px;
-                    border-style: solid;
-                    width: 100%;
+                    @include centered();
+                    border: $table-border;
 
-                    th{
-                        border-color: black;
-                        border-width: 1px;
-                        border-style: solid;
+                    th {
+                        border: $table-border;
                         padding: 0 5px;
                     }
                 }
@@ -69,12 +78,10 @@ html {
                         background: none;
                         border: none;
                         color: blue;
-                        text-decoration: none;
                         cursor: pointer;
-                        font-family: serif;
-                        font-size: 18px;
-                        font-weight: bold;
+                        font: $link-font;
                         margin-top: 40px;
+                        text-decoration: none;
                     }
                     .link-button:focus {
                         outline: none;
@@ -86,9 +93,7 @@ html {
             }
 
             .errors {
-                width: 100%;
-                text-align: center;
-                margin: 0px auto;
+                @include centered();
 
                 li {
                     margin-top: 10px;
@@ -101,16 +106,12 @@ html {
             }
 
             .links {
-                margin-bottom: 10%;
+                @include centered(25px, 20px);
                 overflow: hidden;
-                width: 100%;
-                text-align: center;
-                margin: 25px auto 20px auto;
 
                 a {
+                    font: $link-font;
                     text-decoration: none;
-                    font-size: 18px;
-                    font-weight: bold;
                 }
             }
         }
