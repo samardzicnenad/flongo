@@ -43,7 +43,7 @@ The application uses:
 - Gunicorn - application server
 - Nginx - front end reverse proxy
 - Jinja2 - templating engine and
-- libsass - flask extension for building css from sass or scss
+- libsass - CSS preprocessor
 
 ## Notes:
 - during the login and signup processes, non ascii characters will be ignored
